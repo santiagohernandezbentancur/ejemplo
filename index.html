@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Objeto de Aprendizaje interactivo para practicar métodos con ArrayList en Java mediante seis desafíos incrementales." />
+  <title>Desafío Java · Métodos con ArrayList</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanline" aria-hidden="true"></div>
+  <noscript><div class="feedback error">Este recurso necesita JavaScript habilitado para funcionar.</div></noscript>
+
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Programación I · INET 2026</p>
+      <h1><span class="prompt-mark">$</span> java.practice/arraylist</h1>
+    </div>
+    <div class="progress-wrap" aria-label="Progreso del recorrido">
+      <span id="progressText">0 de 6 desafíos</span>
+      <div class="progress-track" aria-hidden="true"><div id="progressBar" class="progress-bar"></div></div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section id="welcomeScreen" class="panel hero" aria-labelledby="welcomeTitle">
+      <div class="hero-copy">
+        <p class="badge">Objeto de Aprendizaje · Java</p>
+        <h2 id="welcomeTitle">Métodos con ArrayList: consultar, modificar y producir nuevas listas</h2>
+        <p>Resolvé seis desafíos incrementales con ArrayList. Vas a recorrer, sumar, buscar, agregar sin duplicar, filtrar y aplicar una eliminación condicional.</p>
+        <div class="terminal-window" aria-label="Inicio del entorno de práctica">
+          <div class="terminal-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="terminal-title">java-learning-console</span></div>
+          <div class="terminal-body">
+            <p class="boot-line"><strong>&gt;</strong> cargando secuencia didáctica...</p>
+            <p class="boot-line"><strong>&gt;</strong> modo: práctica incremental</p>
+            <p class="boot-line"><strong>&gt;</strong> desafíos: 6 + transferencia final</p>
+            <p class="boot-line"><strong>&gt;</strong> estado: listo</p>
+          </div>
+        </div>
+        <div class="learning-path" aria-label="Ruta de aprendizaje"><span>Recorrer</span><span>→</span><span>Sumar</span><span>→</span><span>Buscar</span><span>→</span><span>Agregar</span><span>→</span><span>Filtrar</span><span>→</span><span>Eliminar</span></div>
+      </div>
+
+      <form id="nameForm" class="name-card">
+        <label for="studentName"><span class="prompt-mark">&gt;</span> Identificate para iniciar:</label>
+        <input id="studentName" name="studentName" type="text" autocomplete="name" maxlength="60" placeholder="nombre_estudiante" required />
+        <button class="btn primary" type="submit">./comenzar</button>
+        <p class="microcopy">El nombre y el progreso se guardan solamente en este navegador. El recurso no envía datos a servicios externos.</p>
+      </form>
+    </section>
+
+    <section id="learningScreen" class="hidden" aria-live="polite">
+      <div class="student-strip">
+        <div><span class="muted">sesión activa</span><strong id="studentLabel"></strong></div>
+        <button id="restartBtn" class="btn ghost small" type="button">reiniciar()</button>
+      </div>
+
+      <article id="challengeCard" class="panel challenge-card">
+        <div class="challenge-head">
+          <div><p id="challengeKicker" class="eyebrow"></p><h2 id="challengeTitle"></h2></div>
+          <span id="challengeLevel" class="level-chip"></span>
+        </div>
+        <p id="challengePrompt" class="challenge-prompt"></p>
+
+        <div class="workspace">
+          <div class="terminal-window">
+            <div class="terminal-bar"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span><span class="terminal-title">Main.java · completá los espacios</span></div>
+            <div id="codeArea" class="code-card" aria-label="Código Java a completar"></div>
+          </div>
+          <aside class="terminal-window side-console" aria-label="Ayuda de la práctica">
+            <div class="terminal-bar"><span class="dot green"></span><span class="terminal-title">ayuda.txt</span></div>
+            <div class="terminal-body">
+              <p class="mini-prompt">$ objetivo_actual</p>
+              <p id="objectiveText" class="mini-note"></p>
+              <p class="mini-prompt">$ regla</p>
+              <p class="mini-note">Completá solamente los espacios editables. Presioná Enter o usá <strong>comprobar()</strong>.</p>
+            </div>
+          </aside>
+        </div>
+
+        <div class="action-row">
+          <button id="hintBtn" class="btn ghost" type="button">pista()</button>
+          <button id="checkBtn" class="btn primary" type="button">comprobar()</button>
+        </div>
+        <div id="hintBox" class="feedback hint hidden" role="note"></div>
+        <div id="feedbackBox" class="feedback hidden" role="status"></div>
+        <div id="consoleBox" class="console hidden" aria-label="Salida de consola simulada">
+          <div class="console-title">terminal · salida simulada</div>
+          <div class="console-command">$ javac Main.java &amp;&amp; java Main</div>
+          <pre id="consoleOutput"></pre>
+        </div>
+        <div class="nav-row">
+          <button id="prevBtn" class="btn ghost" type="button">&larr; anterior</button>
+          <button id="nextBtn" class="btn primary" type="button" disabled>siguiente &rarr;</button>
+        </div>
+      </article>
+    </section>
+
+    <section id="finalScreen" class="panel final hidden" aria-labelledby="finalTitle">
+      <p class="badge success">recorrido completado</p>
+      <h2 id="finalTitle">Compilación mental superada, <span id="finalStudent"></span>.</h2>
+      <p>Ahora salí del andamiaje. El sistema te asignó al azar un desafío de transferencia. Resolvelo en Java en tu computadora, ejecutalo, verificá la salida y entregá el archivo por CREA.</p>
+      <div class="assignment-card">
+        <p class="eyebrow">$ desafio_final --asignar</p>
+        <h3 id="assignmentTitle"></h3>
+        <p id="assignmentText"></p>
+        <div id="assignmentRequirements" class="requirements"></div>
+        <button id="copyAssignmentBtn" class="btn ghost" type="button">copiar_consigna()</button>
+      </div>
+      <div class="deliverable">
+        <h3>Entrega en CREA</h3>
+        <ol>
+          <li>Creá una clase Java con un <code>main()</code> que prepare o cargue los datos.</li>
+          <li>Resolvé el problema mediante uno o más métodos independientes.</li>
+          <li>Probá al menos dos casos y verificá la salida de consola.</li>
+          <li>Subí el archivo <code>.java</code> solicitado por tu docente.</li>
+        </ol>
+      </div>
+      <div class="reflection">
+        <h3>Checklist antes de entregar</h3>
+        <label><input type="checkbox" /> Usé ArrayList con el tipo genérico adecuado.</label><label><input type="checkbox" /> La lógica principal está en métodos y no concentrada en main().</label><label><input type="checkbox" /> Elegí correctamente entre size(), get(), add(), contains() y removeIf().</label><label><input type="checkbox" /> Probé casos normales y algún caso límite.</label>
+      </div>
+    </section>
+  </main>
+
+  <details class="ai-declaration">
+    <summary>Declaratoria de uso de IA en la construcción del recurso</summary>
+    <p>Este Objeto de Aprendizaje fue desarrollado con apoyo de IA generativa de OpenAI (ChatGPT) para ideación, redacción, diseño de interfaz y asistencia en la programación. La selección de contenidos, la secuencia didáctica, la revisión y la responsabilidad académica final corresponden al docente Prof. Santiago Hernández. La IA no evalúa al estudiante ni recibe sus respuestas: este recurso funciona localmente en el navegador y no envía el nombre ni las producciones a servicios externos.</p>
+  </details>
+
+  <footer>
+    <p>Programación I · INET 2026 · Prof. Santiago Hernández</p>
+    <p>Práctica interactiva de ArrayList, genéricos, métodos básicos de colección y modularización en Java.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
+</html>
